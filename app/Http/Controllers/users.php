@@ -8,6 +8,58 @@ use App\Models\userModel;
 
 class users extends Controller
 {
+
+   
+    function login(Request $req){
+        try{
+     
+            $username = $req->input('username');
+            $password = $req->input('password');
+            $response = userModel::login($username,$password);
+
+
+            if($response['res']){
+
+                $session = [
+                    'id' =>$response['result'][0]->id, 
+                    'username' =>$response['result'][0]->username, 
+                    'name'=> $response['result'][0]->name,
+                    'role'=> $response['result'][0]->role
+                ];
+
+                Session::put('userLog', $session);
+
+                return response()->json(
+                    array(
+                    'result' => true, 
+                    'message' =>"login success",
+                    'redirect_url'=>'/dashboard'
+                    )
+                );
+              
+            }
+
+        }catch(\Exception $e){
+            return response()->json(
+                array(
+                //'data'=>$data,
+                'result' => false, 
+                'message' =>"error:". $e->getMessage(),
+                'redirect_url'=>'/'
+                )
+            );
+        }
+    }
+
+    function logout(){
+        try{
+            Session::flush();
+            return redirect('/');
+        }catch(\Exception $e){
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
+    }
+
     function accountList(){
         try{
             $response = userModel::userAccounts();
@@ -35,8 +87,6 @@ class users extends Controller
                 }
             }
 
-          
-
             return response()->json(
                 array(
                     "data" => $data,
@@ -48,7 +98,7 @@ class users extends Controller
         }catch(\Exception $e){
             return response()->json(
                 array(
-                    //"data" => $data,
+                    
                     "result"=>"error",
                     "message"=>$e->getMessage()
                 )

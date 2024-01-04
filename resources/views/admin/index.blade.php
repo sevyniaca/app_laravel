@@ -13,7 +13,7 @@
     @include('components.navigation')
 
     <div class="height-100 pageContent">
-        <!--@yield overridden or filled in by child views that extend a parent view. -->
+        <!--yield overridden or filled in by child views that extend a parent view. -->
         @yield('pageContent')
         <!-- dashboard and user page -->
     </div>
