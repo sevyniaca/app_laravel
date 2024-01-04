@@ -16,8 +16,14 @@
    
             <a href="#" class="nav_logo"><span class="nav_logo-name">{{ Session::get('userLog.name')}} <br><span>( {{Session::get('userLog.role')}})</span></span> </a>
             <div class="nav_list"> 
-                <a href="{{ route('dashboard') }}" class="nav_link {{ Request::is('dashboard') ? 'active' : '' }}"> <i class="bx bx-grid-alt nav_icon"></i> <span class="nav_name">Dashboard</span> </a> 
-                <a href="{{ route('users') }}" class="nav_link {{ Request::is('users') ? 'active' : '' }}"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a> 
+                <a href="{{ route('dashboard') }}" class="nav_link {{ Request::is('dashboard') ? 'active' : '' }}"> 
+                    <i class="bx bx-grid-alt nav_icon"></i> 
+                    <span class="nav_name">Dashboard</span> 
+                </a> 
+                <a href="{{ route('users') }}" class="nav_link {{ Request::is('users') ? 'active' : '' }}"> 
+                    <i class='bx bx-user nav_icon'></i> 
+                    <span class="nav_name">Users</span> 
+                </a> 
             </div>
         </div> 
      

@@ -3,7 +3,6 @@
 
 @section('title', 'Users')
 
-
 @section('pageContent')
     <div class="container">
     <div class="row">
@@ -30,11 +29,7 @@
         </div>
     </div>
     </div>
-   
-   
 @endsection
-
-
 
 @section('common-scripts')
     <script src="{{ asset('actions/js/main.js')}}"></script>

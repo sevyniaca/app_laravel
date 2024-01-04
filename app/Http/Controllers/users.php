@@ -16,19 +16,14 @@ class users extends Controller
             $username = $req->input('username');
             $password = $req->input('password');
             $response = userModel::login($username,$password);
-
-
             if($response['res']){
-
                 $session = [
                     'id' =>$response['result'][0]->id, 
                     'username' =>$response['result'][0]->username, 
                     'name'=> $response['result'][0]->name,
                     'role'=> $response['result'][0]->role
                 ];
-
                 Session::put('userLog', $session);
-
                 return response()->json(
                     array(
                     'result' => true, 
@@ -36,9 +31,7 @@ class users extends Controller
                     'redirect_url'=>'/dashboard'
                     )
                 );
-              
             }
-
         }catch(\Exception $e){
             return response()->json(
                 array(
@@ -59,12 +52,10 @@ class users extends Controller
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
     }
-
     function accountList(){
         try{
             $response = userModel::userAccounts();
             $data = array();
-
             if($response['res']){
                 foreach($response['result'] as $rows){
                     $actions ="<select class=' appointmentActionBtn'  data-id='$rows->id'>
@@ -86,7 +77,6 @@ class users extends Controller
                     );
                 }
             }
-
             return response()->json(
                 array(
                     "data" => $data,
@@ -98,7 +88,6 @@ class users extends Controller
         }catch(\Exception $e){
             return response()->json(
                 array(
-                    
                     "result"=>"error",
                     "message"=>$e->getMessage()
                 )
