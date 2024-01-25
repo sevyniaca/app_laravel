@@ -15,7 +15,7 @@
       <div class="card">
         <div class="card-body">
           <h2 class="card-title text-center mb-4">Login</h2>
-          <form action="" method="POST" id="loginForm">
+          <form action="" method="POST" id="loginForm" enctype="multipart/form-data">
             @csrf
             <div class="mb-3 " id="alerts">
            

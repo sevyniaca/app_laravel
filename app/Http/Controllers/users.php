@@ -10,12 +10,14 @@ class users extends Controller
 {
 
    
-    function login(Request $req){
+    public function login(Request $req){
         try{
      
+
             $username = $req->input('username');
             $password = $req->input('password');
-            $response = userModel::login($username,$password);
+
+            $response =userModel::login($username,$password);
             if($response['res']){
                 $session = [
                     'id' =>$response['result'][0]->id, 
@@ -23,6 +25,7 @@ class users extends Controller
                     'name'=> $response['result'][0]->name,
                     'role'=> $response['result'][0]->role
                 ];
+
                 Session::put('userLog', $session);
                 return response()->json(
                     array(

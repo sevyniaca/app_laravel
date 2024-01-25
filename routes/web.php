@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\users;
+use App\Http\Middleware\sessionMiddleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

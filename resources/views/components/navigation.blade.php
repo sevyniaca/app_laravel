@@ -14,7 +14,7 @@
       
         <div> 
    
-            <a href="#" class="nav_logo"><span class="nav_logo-name">{{ Session::get('userLog.name')}} <br><span>( {{Session::get('userLog.role')}})</span></span> </a>
+            <a href="#" class="nav_logo"> <i class='bx bx-home nav_icon'></i><span class="nav_name">Sample Web</span> </a>
             <div class="nav_list"> 
                 <a href="{{ route('dashboard') }}" class="nav_link {{ Request::is('dashboard') ? 'active' : '' }}"> 
                     <i class="bx bx-grid-alt nav_icon"></i> 
