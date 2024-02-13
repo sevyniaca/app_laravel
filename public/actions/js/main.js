@@ -14,7 +14,7 @@ const showNotification = (type, description, result) => {
         title: type,
         text: description,
         icon: result, // success, error, warning, info, question
-        timer: 1000, // Set the timer to 2000 milliseconds (2 seconds)
+        timer: 2000, // Set the timer to 2000 milliseconds (2 seconds)
         showConfirmButton: false // Hide the "OK" button
         });
     }
@@ -32,6 +32,27 @@ const showNotificationRedirectTime = async(type, description, icon) => {
             })
     })
 }
+
+const showNotificationConfirmation=async(icon,title,text) => {
+    return new Promise((resolve,reject)=>{
+        Swal.fire({
+            icon: icon,
+            title: title,
+            text: text,
+            showConfirmButton: true,
+            showCancelButton: true,
+            allowOutsideClick: false,
+            }).then((result) => {
+            if (result.isConfirmed) {
+                resolve(true)
+            }else{
+                resolve(false)
+            }
+        });
+    })
+}
+   
+
 
 const alertDivs =(message,color)=>{
     var html="";

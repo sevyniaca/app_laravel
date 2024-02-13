@@ -13,16 +13,19 @@
     @include('components.navigation')
 
     <div class="height-100 pageContent">
-        <!--yield overridden or filled in by child views that extend a parent view. -->
-        @yield('pageContent')
+    <!--yield overridden or filled in by child views that extend a parent view. -->
+    @yield('pageContent')
         <!-- dashboard and user page -->
     </div>
     <!--Container Main end-->
-
-      <!-- require_once (scripts) -->
+    @yield('modals')
+    <!-- require_once (scripts) -->
     @include('components.scripts')
 
     <!-- apply script on specific page when called-->
+ 
+
     @yield('common-scripts')
+    
 </body>
 </html>

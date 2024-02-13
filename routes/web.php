@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\users;
+use App\Http\Controllers\pages;
 use App\Http\Middleware\sessionMiddleware;
 /*
 |--------------------------------------------------------------------------
@@ -16,17 +17,25 @@ use App\Http\Middleware\sessionMiddleware;
 //page view
 
 //link -> blade file directory - > route name (optional)
-Route::get('/', function () {return view('login');})->name('login');
+Route::get('/', [pages::class,'loginPage'])->name('login');
 
-Route::get('/dashboard', function () {return view('admin/pages/dashboard');})->name('dashboard');
+Route::get('/dashboard', [pages::class,'adminDashboard'])->name('dashboard');
 
-Route::get('/users', function () {return view('admin/pages/users');})->name('users');
+Route::get('/users',[pages::class,'admidUsers'] )->name('users');
 
 Route::get('/logout',[users::class,'logout'])->name('logout');
 
 
 //get data from database
 Route::get('/userAccount',[users::class,'accountList']);
+Route::get('/selectAccount',[users::class,'selectAccount']);
+
 
 //form request
 Route::post('/login',[users::class,'login']); 
+Route::post('/createAccount',[users::class,'createAccount']);
+Route::post('/editInfo',[users::class,'editInfo']);
+Route::post('/editRole',[users::class,'editRole']);
+
+//get request 
+Route::get('/changeStatus',[users::class,'changeStatus']);

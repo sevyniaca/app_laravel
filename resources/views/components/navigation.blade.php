@@ -7,7 +7,7 @@
         </div>
        
 </header>
-<div class="l-navbar show" id="nav-bar">
+<div class="l-navbar shows" id="nav-bar">
 
 
     <nav class="nav">
@@ -22,7 +22,7 @@
                 </a> 
                 <a href="{{ route('users') }}" class="nav_link {{ Request::is('users') ? 'active' : '' }}"> 
                     <i class='bx bx-user nav_icon'></i> 
-                    <span class="nav_name">Users</span> 
+                    <span class="nav_name">Employees</span> 
                 </a> 
             </div>
         </div> 
